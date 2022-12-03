@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
-        canvasColor: Colors.grey,
+        canvasColor: Color.fromARGB(223, 250, 250, 250),
         fontFamily: 'Releway',
         textTheme: ThemeData.light().textTheme.copyWith(
             bodyText1: TextStyle(
