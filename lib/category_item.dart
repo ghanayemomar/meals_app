@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 import './category_meals_screen.dart';
 
 class CategoryItem extends StatelessWidget {
-  // const CategoryItem({Key key}) : super(key: key);
+  final String id;
   final String title;
   final Color color;
 
-  CategoryItem(this.title, this.color);
+  CategoryItem(this.id, this.title, this.color);
 
   void selectCategory(BuildContext ctx) {
     Navigator.of(ctx).push(
       MaterialPageRoute(
         builder: (_) {
-          return CategoryMealsScreen();
+          print(id);
+          print(title);
+          return CategoryMealsScreen(id, title);
         },
       ),
     );
@@ -22,7 +24,7 @@ class CategoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => selectCategory(context),
-      splashColor: Theme.of(context).primaryColorLight,
+      splashColor: Theme.of(context).errorColor,
       borderRadius: BorderRadius.circular(15),
       child: Container(
         padding: const EdgeInsets.all(15),
@@ -42,3 +44,4 @@ class CategoryItem extends StatelessWidget {
     );
   }
 }
+//here this class is the one blank that we shown.
