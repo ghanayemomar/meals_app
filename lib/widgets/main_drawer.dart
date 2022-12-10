@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 // import 'package:my_app/models/meal.dart';
+import '../screens/filters_screen.dart';
 
 class MainDrawer extends StatelessWidget {
-  Widget buildListtile(String title, IconData icon) {
+  Widget buildListtile(String title, IconData icon, Function tapHandler) {
     return ListTile(
-        leading: Icon(
-          icon,
-          size: 30,
-        ),
-        title: Text(
-          title,
-          style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'RobotoCondensed',
-              fontSize: 30,
-              fontWeight: FontWeight.bold),
-        ),
-        onTap: () {
-          //..
-        });
+      leading: Icon(
+        icon,
+        color: Colors.blueGrey,
+        size: 30,
+      ),
+      title: Text(
+        title,
+        style: TextStyle(
+            color: Colors.blueGrey,
+            fontFamily: 'RobotoCondensed',
+            fontSize: 30,
+            fontWeight: FontWeight.bold),
+      ),
+      onTap: tapHandler,
+    );
   }
 
   @override
@@ -28,8 +29,8 @@ class MainDrawer extends StatelessWidget {
         Container(
           height: 100,
           width: double.infinity,
-          padding: EdgeInsets.all(20),
-          alignment: Alignment.centerLeft,
+          padding: EdgeInsets.all(25),
+          alignment: Alignment.topLeft,
           color: Colors.white,
           child: Text(
             'Cooking Up!!',
@@ -40,8 +41,20 @@ class MainDrawer extends StatelessWidget {
           ),
         ),
         SizedBox(height: 10),
-        buildListtile("Meals", Icons.restaurant),
-        buildListtile("Setting", Icons.settings)
+        buildListtile(
+          "Meals",
+          Icons.restaurant,
+          () {
+            Navigator.of(context).pushNamed('/');
+          },
+        ),
+        buildListtile(
+          "Fliter",
+          Icons.settings,
+          () {
+            Navigator.of(context).pushNamed(FiltersScreen.routeName);
+          },
+        )
       ]),
     );
   }
